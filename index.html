@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LeadsUp for Agents — Free Local Market Breakdown</title>
+<meta name="description" content="Real estate agents: get a free local market breakdown and a dedicated caller who books listing appointments for you. Request yours from LeadsUp LLC." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0b0f14; --bg-2:#0f151c; --bg-3:#141b24; --line:rgba(255,255,255,.09);
+    --line-2:rgba(255,255,255,.14); --text:#f3f5f7; --text-2:#c5ccd6; --muted:#8a94a3;
+    --accent:#22c36a; --accent-2:#6fdc9a; --accent-ink:#06130b; --accent-soft:rgba(34,195,106,.10);
+    --radius:16px; --radius-sm:10px; --container:1080px;
+    --font-sans:"Inter",ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    --font-serif:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font-sans);background:var(--bg);color:var(--text-2);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 22px}
+  h1,h2,h3{color:var(--text);line-height:1.15;margin:0 0 .5em}
+  .serif{font-family:var(--font-serif);font-weight:400;font-style:italic}
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:rgba(11,15,20,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-weight:800;font-size:20px;color:var(--text);letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .nav-phone{font-weight:600;color:var(--text);font-size:15px}
+  /* hero */
+  .hero{padding:72px 0 40px;background:radial-gradient(1200px 500px at 50% -10%,rgba(34,195,106,.10),transparent 60%)}
+  .kicker{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid rgba(34,195,106,.28);padding:6px 12px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.025em;max-width:820px}
+  .hero p.lead{font-size:clamp(17px,2.2vw,20px);max-width:640px;margin:18px 0 0}
+  .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start;padding:36px 0 72px}
+  @media(max-width:880px){.grid{grid-template-columns:1fr;gap:32px}}
+  /* value list */
+  .val{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:16px}
+  .val li{display:flex;gap:13px;align-items:flex-start;font-size:16px}
+  .val .dot{flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--accent-soft);border:1px solid rgba(34,195,106,.3);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin-top:2px}
+  .val b{color:var(--text)}
+  .trust{margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  /* form card */
+  .card{background:var(--bg-2);border:1px solid var(--line-2);border-radius:var(--radius);padding:26px 24px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+  .card h2{font-size:22px;font-weight:700}
+  .card .sub{font-size:14.5px;color:var(--muted);margin:0 0 18px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13.5px;font-weight:600;color:var(--text-2);margin-bottom:6px}
+  .field .opt{color:var(--muted);font-weight:500}
+  .field input,.field select{width:100%;padding:11px 13px;background:var(--bg-3);border:1px solid var(--line-2);border-radius:var(--radius-sm);color:var(--text);font:inherit;font-size:15px}
+  .field input:focus,.field select:focus{outline:none;border-color:rgba(34,195,106,.55)}
+  .consent{display:flex;gap:11px;align-items:flex-start;margin:16px 0 18px;padding:14px;background:var(--bg-3);border:1px solid var(--line);border-radius:var(--radius-sm)}
+  .consent input{flex:0 0 auto;width:18px;height:18px;margin-top:2px;accent-color:var(--accent)}
+  .consent label{font-size:12.5px;line-height:1.55;color:var(--muted)}
+  .btn{width:100%;padding:14px;background:var(--accent);color:var(--accent-ink);border:none;border-radius:var(--radius-sm);font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+  .btn:hover{background:var(--accent-2)}
+  .finehelp{font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
+  /* footer */
+  footer{border-top:1px solid var(--line);background:var(--bg-2);padding:38px 0;font-size:13.5px;color:var(--muted)}
+  .footcols{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  footer a{color:var(--text-2)}
+  .addr{max-width:340px;line-height:1.7}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">Leads<span>Up</span> <span style="color:var(--muted);font-weight:600">for Agents</span></div>
+    <a class="nav-phone" href="tel:+16466400558">+1 (646) 640-0558</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="kicker">For licensed real estate agents</span>
+      <h1>Your free local market breakdown — plus a caller who books <span class="serif">listing appointments</span> for you.</h1>
+      <p class="lead">Tell us your market and we'll send you a free breakdown of what's moving in your area. Want the listings too? A dedicated LeadsUp caller works your area and books seller appointments straight onto your calendar.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2 style="font-size:24px">What you get</h2>
+        <ul class="val">
+          <li><span class="dot">1</span><div><b>A free local market breakdown.</b> Active inventory, absorption, and price movement for the market you name — no cost, no obligation.</div></li>
+          <li><span class="dot">2</span><div><b>A dedicated outbound caller (optional).</b> A trained LeadsUp caller dials your area and books listing appointments onto your calendar. You just take the meetings.</div></li>
+          <li><span class="dot">3</span><div><b>Appointment scheduling &amp; updates.</b> If you opt in to texts, we'll send your breakdown, appointment reminders, and service updates — nothing else.</div></li>
+        </ul>
+        <p class="trust">LeadsUp LLC works for one side only — <b>you, the agent</b>. We market our own appointment-setting service to our own prospective clients. We never text on behalf of any third party, and we never sell or share your information.</p>
+      </div>
+
+      <!-- OPT-IN FORM: phone + SMS consent are BOTH optional; consent is not a condition of anything -->
+      <div class="card" id="request">
+        <h2>Request your free breakdown</h2>
+        <p class="sub">Takes 30 seconds. A real person follows up.</p>
+        <form action="https://formsubmit.co/info@leadsupcallcenter.com" method="POST">
+          <input type="hidden" name="_subject" value="New agent request — leadsupagents.com" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://leadsupagents.com/thank-you.html" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" type="text" name="name" placeholder="Jane Agent" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" type="email" name="email" placeholder="jane@brokerage.com" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="market">Your market (city / area)</label>
+            <input id="market" type="text" name="market" placeholder="e.g. Charlotte, NC" required />
+          </div>
+          <div class="field">
+            <label for="brokerage">Brokerage <span class="opt">(optional)</span></label>
+            <input id="brokerage" type="text" name="brokerage" placeholder="Optional" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="phone">Mobile number <span class="opt">(optional — only if you want texts)</span></label>
+            <input id="phone" type="tel" name="phone" placeholder="Optional" autocomplete="tel" />
+          </div>
+
+          <div class="consent">
+            <input type="checkbox" id="consent" name="sms_consent" value="yes" />
+            <label for="consent">I agree to receive recurring text messages from LeadsUp LLC at the mobile number I provided — including marketing and promotional offers, appointment and account updates, and customer support — some sent using automated technology. Consent is optional and is not a condition of any purchase or service. Message frequency varies. Message and data rates may apply. Reply STOP to opt out at any time, or HELP for help. Your mobile number and SMS opt-in information will never be sold or shared with third parties. See our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="/terms.html" target="_blank" rel="noopener">Terms of Service</a>.</label>
+          </div>
+
+          <button class="btn" type="submit">Send me my free breakdown</button>
+          <p class="finehelp">No spam, ever. Text <b>STOP</b> to cancel, <b>HELP</b> for help.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" id="about">
+    <div style="max-width:820px;padding:0 0 64px">
+      <h2 style="font-size:24px">About LeadsUp LLC</h2>
+      <p>LeadsUp LLC is an appointment-setting company for licensed real estate agents. Our trained callers work an agent's market by phone, talk with homeowners who are thinking about selling, and book listing appointments directly onto the agent's calendar. Before an agent decides whether to hire us, we prepare a free breakdown of their local market so the conversation starts with real numbers.</p>
+      <p>We are owner-operated, registered in Wyoming, and we work with agents across the United States. Every text we send goes to an agent who asked for it on this page; we do not text on behalf of anyone else, and we never sell or share your contact details. Questions? Call <a href="tel:+16466400558">+1 (646) 640-0558</a> or email <a href="mailto:info@leadsupcallcenter.com">info@leadsupcallcenter.com</a>.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footcols">
+    <div>
+      <div class="logo" style="margin-bottom:10px">Leads<span>Up</span></div>
+      <p class="addr">LeadsUp LLC<br>30 N Gould St, STE R, Sheridan, WY 82801<br>
+      <a href="tel:+16466400558">+1 (646) 640-0558</a> · <a href="mailto:info@leadsupcallcenter.com">info@leadsupcallcenter.com</a></p>
+    </div>
+    <div>
+      <p style="margin:0 0 8px"><a href="/privacy.html">Privacy Policy</a></p>
+      <p style="margin:0 0 8px"><a href="/terms.html">Terms of Service</a></p>
+      <p style="margin:16px 0 0;max-width:340px">By providing a mobile number and checking the consent box, agents opt in to receive texts. Message &amp; data rates may apply. Reply STOP to cancel, HELP for help.</p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px">© 2026 LeadsUp LLC. All rights reserved.</div>
+</footer>
+</body>
+</html>
