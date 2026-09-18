@@ -162,5 +162,35 @@
   </div>
   <div class="wrap" style="margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px">© 2026 LeadsUp LLC. All rights reserved.</div>
 </footer>
+
+<script>
+// Send the request to LeadsUp's own intake (stores the consent record, emails the team, and
+// enrols agents who ticked the SMS box into our opt-in texting list). If that ever fails, the
+// form falls back to the plain email submission it had before, so no request is lost.
+(function () {
+  var form = document.querySelector('#request form');
+  if (!form) return;
+  var ENDPOINT = 'https://jnmuurxmxlonqrjmqdfh.supabase.co/functions/v1/site-lead';
+  form.addEventListener('submit', function (ev) {
+    if (form.dataset.fallback === '1') return;
+    ev.preventDefault();
+    var f = form.elements, consent = f.sms_consent && f.sms_consent.checked;
+    var label = document.querySelector('label[for="consent"]');
+    var body = {
+      source: 'leadsupagents.com',
+      name: f.name.value, email: f.email.value, phone: f.phone.value,
+      company: f.brokerage.value,
+      message: 'Market: ' + f.market.value + (f.brokerage.value ? ' | Brokerage: ' + f.brokerage.value : '') + ' | Requested: free local market breakdown',
+      sms_consent: !!consent,
+      consent_text: consent && label ? label.innerText.trim() : '',
+      _honeypot: f._honey ? f._honey.value : ''
+    };
+    fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (d && d.ok) location.href = '/thank-you.html'; else throw new Error('not stored'); })
+      .catch(function () { form.dataset.fallback = '1'; form.submit(); });
+  });
+})();
+</script>
 </body>
 </html>
